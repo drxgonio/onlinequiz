@@ -1,0 +1,477 @@
+/*
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+*/
+
+/*--reset--*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+dl,
+dt,
+dd,
+ol,
+nav ul,
+nav li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.clearfix {
+  clear: both;
+}
+
+/*--start editing from here--*/
+
+a {
+  text-decoration: none;
+}
+
+.txt-rt {
+  text-align: right;
+}
+
+/* text align right */
+
+.txt-lt {
+  text-align: left;
+}
+
+/* text align left */
+
+.txt-center {
+  text-align: center;
+}
+
+/* text align center */
+
+.float-rt {
+  float: right;
+}
+
+/* float right */
+
+.float-lt {
+  float: left;
+}
+
+/* float left */
+
+.pos-relative {
+  position: relative;
+}
+
+/* Position Relative */
+
+.pos-absolute {
+  position: absolute;
+}
+
+/* Position Absolute */
+
+.vertical-base {
+  vertical-align: baseline;
+}
+
+/* vertical align baseline */
+
+.vertical-top {
+  vertical-align: top;
+}
+
+/* vertical align top */
+
+nav.vertical ul li {
+  display: block;
+}
+
+/* vertical menu */
+
+nav.horizontal ul li {
+  display: inline-block;
+}
+
+/* horizontal menu */
+
+img {
+  max-width: 100%;
+}
+
+/*--end reset--*/
+
+body {
+  font-size: 100%;
+  background: url(../images/banner1.jpg)no-repeat center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  text-align: center;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+h1 {
+  font-size: 2.9em;
+  text-transform: capitalize;
+  color: #fff;
+  margin: 0.8em 1vw 1.2em;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+/*--responsive--*/
+
+@media(max-width:1920px) {
+  h1 {
+    font-size: 3.5vw;
+  }
+}
+
+@media(max-width:1024px) {
+  h1 {
+    font-size: 4.5vw;
+  }
+}
+
+@media(max-width:800px) {
+  h1 {
+    font-size: 5vw;
+  }
+}
+
+@media(max-width:480px) {
+  h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media(max-width:440px) {
+  h1 {
+    font-size: 2.1em;
+  }
+}
+
+@media(max-width:320px) {
+  h1 {
+    font-size: 1.6em;
+  }
+}
+
+#wrapper {
+  padding-bottom: 40px;
+}
+
+.inline pre,
+.inline code {
+  display: inline !important;
+}
+
+.inline pre,
+.inline code {
+  padding: 0 !important;
+  text-align: left;
+  background-color: transparent !important;
+}
+
+.inline pre,
+.inline pre code,
+.inline pre code span {
+  font-size: inherit;
+}
+
+.code {
+  font-weight: 600;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.ui.segment {
+  padding: 40px;
+}
+
+.ui.segments .ui.segment {
+  padding: 20px 32px;
+}
+
+.ui.segment .ui.header {
+  width: 100%;
+  border-bottom: 1px solid #f2f2f2;
+  margin: 0 0 40px !important;
+  padding: 0 0 20px 0;
+}
+
+.ui.table {
+  font-size: 15px;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.ui.button.thin {
+  font-weight: 400;
+}
+
+.label .fas,
+.label .fab,
+.button .fas,
+.button .fab {
+  margin-right: .6em;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.header {
+  max-width: 1440px;
+  width: 90%;
+  margin: 40px auto 20px;
+  text-align: center;
+}
+
+.header h1 {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 20px 0 40px;
+  color: #333333;
+}
+
+.article {
+  max-width: 1440px;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding-top: 80px;
+  border-top: 1px solid #efefef;
+}
+
+.box {
+  display: none;
+  max-width: 360px;
+  margin: 0 auto;
+  font-weight: 600;
+  margin-top: 2em;
+  padding: 1.6em;
+  background-color: #fafafa;
+  border: 1px solid #d8d8d8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  -o-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  overflow: hidden;
+}
+
+h5 {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.title h3 {
+  margin-bottom: 0;
+}
+
+.pignose-calendar {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 14px !important;
+}
+
+.box {
+  text-align: center;
+}
+
+.language-calender .pignose-calender {
+  margin-top: .4em !important;
+}
+
+.input-calendar {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  height: 3.2em;
+  line-height: 3.2em;
+  font: inherit;
+  padding: 0 1.2em;
+  border: 1px solid #d8d8d8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  -o-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+}
+
+.btn-calendar {
+  display: block;
+  text-align: center;
+  width: 100%;
+  max-width: 360px;
+  height: 3.2em;
+  line-height: 3.2em;
+  background-color: #52555a;
+  margin: 0 auto;
+  font-weight: 600;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  -o-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+}
+
+.btn-calendar:hover {
+  background-color: #5a6268;
+}
+
+@media screen and (max-width: 640px) {
+  .pignose-calendar {
+    font-size: 12px !important;
+  }
+}
+
+.copy-wthree {
+  margin: 3em 0em;
+}
+
+/* copyright */
+
+.copy-wthree {
+  margin: 3em 0em;
+}
+
+.copy-wthree p {
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.copy-wthree p a {
+  color: #fff;
+}
+
+/* copyright */
+
+@media(max-width:480px) {
+  .copy-wthree p {
+    font-size: 14px;
+    padding: 0 1em 1em;
+    line-height: 2;
+  }
+}

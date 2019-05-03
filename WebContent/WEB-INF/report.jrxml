@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e996a15-9b37-4965-bdb6-2ca57ef73276">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="460"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="526"/>
+	<parameter name="examId" class="java.lang.Integer"/>
+	<parameter name="studentId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select fe.rowNumber, ce.ChooseAnswer, fe.Question, a.Answer, ce.ExamName, correct.CorrectAnswer, ce.StudentName from
+(select a.Answer ChooseAnswer,a.Question, e.Name ExamName, s.Name StudentName from resulttests rs 
+join detailresult dr on rs.Id = dr.result 
+join answers a on a.Id = dr.Answer
+join exams e on e.Id = rs.Exam
+join profilestudents s on s.User = rs.Student
+where rs.student = $P!{studentId} and rs.exam = $P!{examId}) ce 
+
+right join (select (@cnt := @cnt + 1) AS rowNumber, q.Question, q.Id, q.CorrectAnswer from questions q CROSS JOIN (SELECT @cnt := 0) AS dummy join detailexams de on q.Id = de.Question where exam = $P!{examId}) fe on ce.Question = fe.Id
+join answers a on a.Question = fe.Id
+join (select q.Id QuestionId, a.Answer CorrectAnswer from questions q
+		join answers a on q.CorrectAnswer =a.Id) correct on correct.QuestionId = fe.id]]>
+	</queryString>
+	<field name="rowNumber" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="rowNumber"/>
+	</field>
+	<field name="ChooseAnswer" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ChooseAnswer"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="answers"/>
+	</field>
+	<field name="Question" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Question"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="questions"/>
+	</field>
+	<field name="Answer" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Answer"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="answers"/>
+	</field>
+	<field name="ExamName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ExamName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="exams"/>
+	</field>
+	<field name="CorrectAnswer" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CorrectAnswer"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="answers"/>
+	</field>
+	<field name="StudentName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="StudentName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="profilestudents"/>
+	</field>
+	<group name="Question">
+		<groupExpression><![CDATA[$F{Question}]]></groupExpression>
+		<groupHeader>
+			<band height="49">
+				<rectangle>
+					<reportElement x="2" y="2" width="562" height="38" uuid="c3921b9d-289e-4f6a-9588-0d56a66878f6"/>
+				</rectangle>
+				<textField>
+					<reportElement x="40" y="6" width="505" height="30" uuid="bba9c4d2-f158-4fb7-8d45-376c4e6a31fb"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Question}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="6" width="30" height="30" uuid="2b67c5b3-46c0-408c-8691-96a440a40200"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rowNumber}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50">
+				<textField>
+					<reportElement x="130" y="10" width="434" height="20" uuid="0e069583-2df3-4b6b-85b7-6a4ffa7d6693"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="14" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ChooseAnswer}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="130" y="30" width="434" height="20" uuid="8ecbc277-fe0a-4b08-84f6-7cb2ac591435"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CorrectAnswer}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="2" y="10" width="128" height="20" uuid="f6cdd818-455a-41cb-8ef9-e126dd42e50b"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="14" isBold="true" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Đáp án của bạn]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="2" y="30" width="128" height="20" uuid="0733bb81-55e6-4eca-ba66-4b7777c733d8"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Đáp án đúng]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement x="83" y="0" width="147" height="30" uuid="f3d97db3-6577-4896-8ad8-f800da49d81c"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="22"/>
+				</textElement>
+				<text><![CDATA[Đề kiểm tra    :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="35" width="147" height="30" uuid="e8fe9472-7188-4f67-92cf-8a1096eaf9fa"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="22"/>
+				</textElement>
+				<text><![CDATA[Sinh viên      :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="35" width="340" height="30" uuid="a76a54dd-deb4-4c08-9e69-2e9e6a9d2210"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{StudentName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="340" height="30" uuid="1e1ed159-3f13-456f-ba4e-ebc19baaf62d"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ExamName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="0" width="100" height="20" uuid="62749c69-4724-4007-8cb0-1672028afe86">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5910b771-05f5-4e72-922c-335bb7b6344d"/>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Answer}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
