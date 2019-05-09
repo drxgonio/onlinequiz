@@ -45,8 +45,11 @@ public class LoginController extends HttpServlet {
 		
 		 	
 			String userName=request.getParameter("userName");
-			String pw=request.getParameter("passWord");
-			String password = EncryptionHelper.MD5(pw);
+			String password=request.getParameter("passWord");
+			
+			//String password = EncryptionHelper.MD5(pw);
+			//System.out.println(userName+pw+password);
+		
 			User userAccount=UserService.findAcc(userName,password);
 			if(userAccount==null)
 			{
